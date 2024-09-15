@@ -1,5 +1,16 @@
     import { useState } from 'react';
-    import './index.css';
+    import {
+        Container,
+        TextField,
+        Button,
+        List,
+        ListItem,
+        ListItemText,
+        IconButton,
+        Typography,
+        Paper,
+    } from '@mui/material';
+    import DeleteIcon from '@mui/icons-material/Delete';
 
     const TodoApp = () => {
         const [tasks, setTasks] = useState<string[]>([]);
@@ -18,35 +29,42 @@
         };
 
         return (
-            <div className="max-w-md w-full">
-                <h1 className="text-2xl font-bold mb-4">TODOリスト</h1>
-                <input
-                    type="text"
-                    value={task}
-                    onChange={(e) => setTask(e.target.value)}
-                    className="border border-gray-300 p-2 w-full mb-2"
-                    placeholder="新しいタスクを追加"
-                />
-                <button
-                    onClick={handleAddTask}
-                    className="bg-blue-500 text-white p-2 w-full"
-                >
-                    タスクを追加
-                </button>
-                <ul className="mt-4 flex flex-col items-center">
-                    {tasks.map((task, index) => (
-                        <li key={index} className="flex justify-between items-center border-b py-2">
-                            <span>{task}</span>
-                            <button
-                                onClick={() => handleDeleteTask(index)}
-                                className="text-red-500"
+            <Container maxWidth="sm" style={{ marginTop: '2rem' }}>
+                <Paper elevation={3} style={{ padding: '2rem' }}>
+                    <Typography variant="h4" align="center" gutterBottom>
+                        TODOリスト
+                    </Typography>
+                    <TextField
+                        variant="outlined"
+                        label="新しいタスクを追加"
+                        fullWidth
+                        value={task}
+                        onChange={(e) => setTask(e.target.value)}
+                    />
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        onClick={handleAddTask}
+                        style={{ marginTop: '1rem' }}
+                    >
+                        タスクを追加
+                    </Button>
+                    <List style={{ marginTop: '2rem' }}>
+                        {tasks.map((task, index) => (
+                            <ListItem key={index} divider
+                                secondaryAction={
+                                    <IconButton edge="end" aria-label="delete" onClick={() => handleDeleteTask(index)}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                }
                             >
-                                削除
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+                                <ListItemText primary={task} />
+                            </ListItem>
+                        ))}
+                    </List>
+                </Paper>
+            </Container>
         );
     };
 

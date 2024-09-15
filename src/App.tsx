@@ -18,7 +18,7 @@
         };
 
         return (
-            <div className="max-w-md mx-auto mt-10">
+            <div className="max-w-md w-full">
                 <h1 className="text-2xl font-bold mb-4">TODOリスト</h1>
                 <input
                     type="text"
@@ -33,7 +33,7 @@
                 >
                     タスクを追加
                 </button>
-                <ul className="mt-4">
+                <ul className="mt-4 flex flex-col items-center">
                     {tasks.map((task, index) => (
                         <li key={index} className="flex justify-between items-center border-b py-2">
                             <span>{task}</span>

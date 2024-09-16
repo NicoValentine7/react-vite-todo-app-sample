@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage":"https://nicovalentine7.github.io/react-vite-todo-app-sample/",
+  "homepage": "https://nicovalentine7.github.io/react-vite-todo-app-sample/",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc && vite build",
     "test": "echo \"No tests specified\" && exit 0",
     "lint": "biome check",
     "format": "biome fix",
@@ -15,17 +15,22 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.0",
     "@mui/material": "^6.1.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "framer-motion": "^11.5.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@types/react-slick": "^0.23.13",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
     "biome": "^0.2.2",

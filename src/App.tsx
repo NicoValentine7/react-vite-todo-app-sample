@@ -1,33 +1,48 @@
 import MUITodoApp from './components/MUITodoApp';
 import TailwindTodoApp from './components/TailwindTodoApp';
 import ChakraTodoApp from './components/ChakraTodoApp';
+import AntDesignTodoApp from './components/AntDesignTodoApp';
+import MantineTodoApp from './components/MantineTodoApp';
+import RadixTodoApp from './components/RadixTodoApp';
 
-const App = () => {
+function App() {
 	return (
-		<div className="container mx-auto px-4 py-8">
-			<h1 className="text-3xl font-bold text-center mb-8">TODO App Gallery</h1>
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-				<div className="bg-white border rounded-lg overflow-hidden shadow-lg">
+		<div className="min-h-screen">
+			<h1 className="text-5xl font-bold text-center mb-8">TODO App Gallery</h1>
+			<div className="container mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+				<div className="card">
 					<div className="p-4">
-						<h2 className="text-xl font-semibold mb-4 text-center">MUI Version</h2>
 						<MUITodoApp />
 					</div>
 				</div>
-				<div className="bg-white border rounded-lg overflow-hidden shadow-lg">
+				<div className="card">
 					<div className="p-4">
-						<h2 className="text-xl font-semibold mb-4 text-center">Tailwind Version</h2>
 						<TailwindTodoApp />
 					</div>
 				</div>
-				<div className="bg-white border rounded-lg overflow-hidden shadow-lg">
+				<div className="card">
 					<div className="p-4">
-						<h2 className="text-xl font-semibold mb-4 text-center">Chakra UI Version</h2>
 						<ChakraTodoApp />
+					</div>
+				</div>
+				<div className="card">
+					<div className="p-4">
+						<AntDesignTodoApp />
+					</div>
+				</div>
+				<div className="card">
+					<div className="p-4">
+						<MantineTodoApp />
+					</div>
+				</div>
+				<div className="card">
+					<div className="p-4">
+						<RadixTodoApp />
 					</div>
 				</div>
 			</div>
 		</div>
 	);
-};
+}
 
 export default App;

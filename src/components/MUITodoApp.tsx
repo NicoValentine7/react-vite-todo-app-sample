@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, KeyboardEvent } from 'react';
 import {
     Container,
     TextField,
-    Button,
     List,
     ListItem,
     ListItemText,
     IconButton,
     Typography,
     Paper,
+    Box,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CacheProvider } from '@emotion/react';
 import createEmotionCache from '../createEmotionCache';
@@ -34,6 +35,14 @@ const MUITodoApp: React.FC = () => {
         setTasks(newTasks);
     };
 
+    const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            handleAddTask();
+        } else if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
+            handleAddTask();
+        }
+    };
+
     return (
         <CacheProvider value={muiCache}>
             <ThemeProvider theme={theme}>
@@ -42,23 +51,24 @@ const MUITodoApp: React.FC = () => {
                         <Typography variant="h5" align="center" gutterBottom>
                             TODO List (MUI)
                         </Typography>
-                        <TextField
-                            variant="outlined"
-                            label="Add new task"
-                            fullWidth
-                            value={task}
-                            onChange={(e) => setTask(e.target.value)}
-                        />
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            fullWidth
-                            onClick={handleAddTask}
-                            style={{ marginTop: '1rem' }}
-                        >
-                            Add Task
-                        </Button>
-                        <List style={{ marginTop: '2rem' }}>
+                        <Box display="flex" alignItems="center" mb={2}>
+                            <TextField
+                                variant="outlined"
+                                label="Add new task"
+                                fullWidth
+                                value={task}
+                                onChange={(e) => setTask(e.target.value)}
+                                onKeyPress={handleKeyPress}
+                            />
+                            <IconButton
+                                color="primary"
+                                onClick={handleAddTask}
+                                style={{ marginLeft: '0.5rem' }}
+                            >
+                                <AddIcon />
+                            </IconButton>
+                        </Box>
+                        <List>
                             {tasks.map((task, index) => (
                                 <ListItem key={index} divider
                                     secondaryAction={

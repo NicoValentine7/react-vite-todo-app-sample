@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ChakraProvider } from '@chakra-ui/react';
 import { CacheProvider } from '@emotion/react';
+import { MantineProvider } from '@mantine/core';
 import chakraEmotionCache from './chakraEmotionCache';
 import App from './App';
 import './index.css';
@@ -13,7 +14,9 @@ root.render(
   <React.StrictMode>
     <CacheProvider value={chakraEmotionCache}>
       <ChakraProvider>
-        <App />
+        <MantineProvider>
+          <App />
+        </MantineProvider>
       </ChakraProvider>
     </CacheProvider>
   </React.StrictMode>

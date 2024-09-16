@@ -5,6 +5,7 @@ import autoprefixer from 'autoprefixer'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/react-vite-todo-app-sample/',
   plugins: [react()],
   css: {
     postcss: {
